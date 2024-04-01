@@ -25,7 +25,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            background: linear-gradient(to right, #333, #666);
+           background: linear-gradient(to right, #62cff4 ,#2c67f2 );
             overflow-x: hidden;
             padding-top: 20px;
         }
@@ -49,7 +49,7 @@
         }
 
         .sidebar a.active {
-            background-color: #4CAF50;
+            background-color: #CBC3E3;
         }
 
         .container {
@@ -65,6 +65,49 @@
         h2 {
             color: #333;
         }
+        .sidebar {
+    background-color: #343a40;
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+}
+
+.sidebar-header {
+    padding: 20px;
+    text-align: center;
+}
+
+.sidebar-header h3 {
+    margin-bottom: 0;
+}
+
+.sidebar ul.components {
+    padding: 20px 0;
+}
+
+.sidebar ul.components li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul.components li a {
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+    color: #f8f9fa;
+    transition: all 0.3s;
+}
+
+.sidebar ul.components li a:hover {
+    background-color: #495057;
+}
+
+.sidebar ul.components li.active a {
+    background-color: #adb5bd;
+    color: #343a40;
+}
 
         .custom-gridview {
             width: 100%;
@@ -118,70 +161,106 @@
         .custom-gridview .btn.delete:hover {
             background-color: #555;
         }
-            .delete-button {
-    background-color: #dc3545;
-    color: white; 
+           .edit-button {
+    background-color: #007bff;
+    color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 8px 12px;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
 
+.edit-button:hover {
+    background-color: #0056b3;
+}
 
-.edit-button {
-    background-color: #007bff; 
-    color: white; 
+/* Delete button */
+.delete-button {
+    background-color: #dc3545;
+    color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 8px 12px;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
 }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="sidebar">
-             <h1>Institution</h1>
-             <br />
-            <br />
-            <br />
-            <a href="dash.aspx" >Dashboard</a>
-            <a href="Student.aspx" class="active">Student</a>
+       <nav class="sidebar">
+    <div class="sidebar-header bg-primary">
+        <h3 class="text-white">Institution</h3>
+    </div>
+
+    <ul class="list-unstyled components">
+        <li >
+            <a href="dash.aspx">Dashboard</a>
+        </li>
+        <li class="active">
+            <a href="Student.aspx">Student</a>
+        </li>
+        <li>
             <a href="Instructor.aspx">Instructor</a>
+        </li>
+        <li>
             <a href="Courses.aspx">Courses</a>
-             <a href="Lesson.aspx">Lesson</a>
-             <a href="Progress.aspx">Progress</a>
-            <a href="student_enrollment.aspx" >Student Enrollment</a>
-            <a href="course_instructor.aspx" >Course Instructor</a>
-            <a href="e_learning.aspx" >E-Learning</a>
-        </div>
+        </li>
+        <li>
+            <a href="Lesson.aspx">Lesson</a>
+        </li>
+        <li>
+            <a href="Progress.aspx">Progress</a>
+        </li>
+        <li>
+            <a href="student_enrollment.aspx">Student Enrollment</a>
+        </li>
+        <li>
+            <a href="course_instructor.aspx">Course Instructor</a>
+        </li>
+        <li>
+            <a href="e_learning.aspx">E-Learning</a>
+        </li>
+    </ul>
+</nav>
 
         <div class="container" aria-orientation="horizontal" aria-setsize="20">
             <h2>Student Details</h2>
              <asp:Button ID="btnAddData" runat="server" Text="Add Data" CommandName="AddData" CommandArgument='<%# Eval("S_ID") %>' OnClick="btnAddData_Click" BackColor="White" BorderColor="#000099" ForeColor="#000099" />
-            <asp:GridView ID="GridView1" runat="server" CssClass="custom-gridview" AutoGenerateColumns="False" DataKeyNames="ID" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
-                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-                <Columns>
-                     <asp:CommandField ShowEditButton="True" ControlStyle-CssClass="edit-button" />
- <asp:CommandField ShowDeleteButton="True" ControlStyle-CssClass="delete-button"  />
-                    <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" SortExpression="ID" />
-                    <asp:BoundField DataField="STUDENT_NAME" HeaderText="STUDENT_NAME" SortExpression="STUDENT_NAME" />
-                    <asp:BoundField DataField="CONTACT" HeaderText="CONTACT" SortExpression="CONTACT" />
-                    <asp:BoundField DataField="DOB" HeaderText="DOB" SortExpression="DOB" />
-                    <asp:BoundField DataField="EMAIL" HeaderText="EMAIL" SortExpression="EMAIL" />
-                    <asp:BoundField DataField="COUNTRY" HeaderText="COUNTRY" SortExpression="COUNTRY" />
-                </Columns>
-                <EditRowStyle BackColor="#999999" />
-                <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-                <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-                <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-                <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-                <SortedAscendingCellStyle BackColor="#E9E7E2" />
-                <SortedAscendingHeaderStyle BackColor="#506C8C" />
-                <SortedDescendingCellStyle BackColor="#FFFDF8" />
-                <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
-            </asp:GridView>
+            <asp:GridView ID="GridView1" runat="server" CssClass="custom-gridview" AutoGenerateColumns="False" DataKeyNames="ID" CellPadding="4" DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AllowPaging="True">
+    <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+    <Columns>
+        
+        <asp:BoundField DataField="ID" HeaderText="ID" ReadOnly="True" SortExpression="ID" />
+        <asp:BoundField DataField="STUDENT_NAME" HeaderText="STUDENT_NAME" SortExpression="STUDENT_NAME" />
+        <asp:BoundField DataField="CONTACT" HeaderText="CONTACT" SortExpression="CONTACT" />
+        <asp:BoundField DataField="DOB" HeaderText="DOB" SortExpression="DOB" />
+        <asp:BoundField DataField="EMAIL" HeaderText="EMAIL" SortExpression="EMAIL" />
+        <asp:BoundField DataField="COUNTRY" HeaderText="COUNTRY" SortExpression="COUNTRY" />
+       <asp:CommandField ShowEditButton="True" ControlStyle-CssClass="edit-button" >
+<ControlStyle CssClass="edit-button"></ControlStyle>
+                     </asp:CommandField>
+ <asp:CommandField ShowDeleteButton="True" ControlStyle-CssClass="delete-button"  >
+<ControlStyle CssClass="delete-button"></ControlStyle>
+                     </asp:CommandField>
+    </Columns>
+   
+    <EditRowStyle BackColor="#999999" />
+    <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+    <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+    <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+    <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+    <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+    <SortedAscendingCellStyle BackColor="#E9E7E2" />
+    <SortedAscendingHeaderStyle BackColor="#506C8C" />
+    <SortedDescendingCellStyle BackColor="#FFFDF8" />
+    <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+</asp:GridView>
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" DeleteCommand="DELETE FROM &quot;STUDENTS&quot; WHERE &quot;ID&quot; = :ID" InsertCommand="INSERT INTO &quot;STUDENTS&quot; (&quot;ID&quot;, &quot;STUDENT_NAME&quot;, &quot;CONTACT&quot;, &quot;DOB&quot;, &quot;EMAIL&quot;, &quot;COUNTRY&quot;) VALUES (:ID, :STUDENT_NAME, :CONTACT, :DOB, :EMAIL, :COUNTRY)" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT * FROM &quot;STUDENTS&quot;" UpdateCommand="UPDATE &quot;STUDENTS&quot; SET &quot;STUDENT_NAME&quot; = :STUDENT_NAME, &quot;CONTACT&quot; = :CONTACT, &quot;DOB&quot; = :DOB, &quot;EMAIL&quot; = :EMAIL, &quot;COUNTRY&quot; = :COUNTRY WHERE &quot;ID&quot; = :ID">
                 <DeleteParameters>
                     <asp:Parameter Name="ID" Type="Decimal" />

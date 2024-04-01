@@ -47,9 +47,6 @@
                     INSTRUCTORNAME:
                     <asp:TextBox ID="INSTRUCTORNAMETextBox" runat="server" Text='<%# Bind("INSTRUCTORNAME") %>' />
                     <br />
-                    COURSEID:
-                    <asp:TextBox ID="COURSEIDTextBox" runat="server" Text='<%# Bind("COURSEID") %>' />
-                    <br />
                     <asp:LinkButton ID="UpdateButton" runat="server" CausesValidation="True" CommandName="Update" Text="Update" />
                     &nbsp;<asp:LinkButton ID="UpdateCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
                 </EditItemTemplate>
@@ -59,9 +56,6 @@
                     <br />
                     INSTRUCTORNAME:
                     <asp:TextBox ID="INSTRUCTORNAMETextBox" runat="server" Text='<%# Bind("INSTRUCTORNAME") %>' />
-                    <br />
-                    COURSEID:
-                    <asp:TextBox ID="COURSEIDTextBox" runat="server" Text='<%# Bind("COURSEID") %>' />
                     <br />
                     <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
                     &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
@@ -73,27 +67,22 @@
                     INSTRUCTORNAME:
                     <asp:Label ID="INSTRUCTORNAMELabel" runat="server" Text='<%# Bind("INSTRUCTORNAME") %>' />
                     <br />
-                    COURSEID:
-                    <asp:Label ID="COURSEIDLabel" runat="server" Text='<%# Bind("COURSEID") %>' />
-                    <br />
                     <asp:LinkButton ID="EditButton" runat="server" CausesValidation="False" CommandName="Edit" Text="Edit" />
 &nbsp;<asp:LinkButton ID="DeleteButton" runat="server" CausesValidation="False" CommandName="Delete" Text="Delete" />
 &nbsp;<asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="New" />
 
                 </ItemTemplate>
             </asp:FormView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT * FROM &quot;INSTRUCTOR&quot;" DeleteCommand="DELETE FROM &quot;INSTRUCTOR&quot; WHERE &quot;INSTRUCTORID&quot; = :INSTRUCTORID" InsertCommand="INSERT INTO &quot;INSTRUCTOR&quot; (&quot;INSTRUCTORID&quot;, &quot;INSTRUCTORNAME&quot;, &quot;COURSEID&quot;) VALUES (:INSTRUCTORID, :INSTRUCTORNAME, :COURSEID)" UpdateCommand="UPDATE &quot;INSTRUCTOR&quot; SET &quot;INSTRUCTORNAME&quot; = :INSTRUCTORNAME, &quot;COURSEID&quot; = :COURSEID WHERE &quot;INSTRUCTORID&quot; = :INSTRUCTORID">
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT * FROM &quot;INSTRUCTOR&quot;" DeleteCommand="DELETE FROM &quot;INSTRUCTOR&quot; WHERE &quot;INSTRUCTORID&quot; = :INSTRUCTORID" InsertCommand="INSERT INTO &quot;INSTRUCTOR&quot; (&quot;INSTRUCTORID&quot;, &quot;INSTRUCTORNAME&quot;) VALUES (:INSTRUCTORID, :INSTRUCTORNAME)" UpdateCommand="UPDATE &quot;INSTRUCTOR&quot; SET &quot;INSTRUCTORNAME&quot; = :INSTRUCTORNAME WHERE &quot;INSTRUCTORID&quot; = :INSTRUCTORID">
             <DeleteParameters>
                 <asp:Parameter Name="INSTRUCTORID" Type="Decimal" />
             </DeleteParameters>
             <InsertParameters>
                 <asp:Parameter Name="INSTRUCTORID" Type="Decimal" />
                 <asp:Parameter Name="INSTRUCTORNAME" Type="String" />
-                <asp:Parameter Name="COURSEID" Type="Decimal" />
             </InsertParameters>
             <UpdateParameters>
                 <asp:Parameter Name="INSTRUCTORNAME" Type="String" />
-                <asp:Parameter Name="COURSEID" Type="Decimal" />
                 <asp:Parameter Name="INSTRUCTORID" Type="Decimal" />
             </UpdateParameters>
         </asp:SqlDataSource>

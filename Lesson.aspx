@@ -23,7 +23,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            background: linear-gradient(to right, #333, #666);
+           background: linear-gradient(to right, #62cff4 ,#2c67f2 );
             overflow-x: hidden;
             padding-top: 20px;
         }
@@ -47,7 +47,7 @@
         }
 
         .sidebar a.active {
-            background-color: #4CAF50;
+           background-color: #CBC3E3;
         }
 
         .container {
@@ -63,6 +63,49 @@
         h2 {
             color: #333;
         }
+        .sidebar {
+    background-color: #343a40;
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+}
+
+.sidebar-header {
+    padding: 20px;
+    text-align: center;
+}
+
+.sidebar-header h3 {
+    margin-bottom: 0;
+}
+
+.sidebar ul.components {
+    padding: 20px 0;
+}
+
+.sidebar ul.components li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul.components li a {
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+    color: #f8f9fa;
+    transition: all 0.3s;
+}
+
+.sidebar ul.components li a:hover {
+    background-color: #495057;
+}
+
+.sidebar ul.components li.active a {
+    background-color: #adb5bd;
+    color: #343a40;
+}
 
         .custom-gridview {
             width: 100%;
@@ -139,39 +182,60 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="sidebar">
-             <h1>Institution</h1>
-             <br />
-            <br />
-            <br />
-            <a href="dash.aspx" >Dashboard</a>
-            <a href="Student.aspx" >Student</a>
+       <nav class="sidebar">
+    <div class="sidebar-header bg-primary">
+        <h3 class="text-white">Institution</h3>
+    </div>
+
+    <ul class="list-unstyled components">
+        <li >
+            <a href="dash.aspx">Dashboard</a>
+        </li>
+        <li>
+            <a href="Student.aspx">Student</a>
+        </li>
+        <li>
             <a href="Instructor.aspx">Instructor</a>
+        </li>
+        <li>
             <a href="Courses.aspx">Courses</a>
-             <a href="Lesson.aspx" class="active">Lesson</a>
-             <a href="Progress.aspx">Progress</a>
-            <a href="student_enrollment.aspx" >Student Enrollment</a>
-            <a href="course_instructor.aspx" >Course Instructor</a>
-            <a href="e_learning.aspx" >E-Learning</a>
-        </div>
+        </li>
+        <li class="active">
+            <a href="Lesson.aspx">Lesson</a>
+        </li>
+        <li>
+            <a href="Progress.aspx">Progress</a>
+        </li>
+        <li>
+            <a href="student_enrollment.aspx">Student Enrollment</a>
+        </li>
+        <li>
+            <a href="course_instructor.aspx">Course Instructor</a>
+        </li>
+        <li>
+            <a href="e_learning.aspx">E-Learning</a>
+        </li>
+    </ul>
+</nav>
 
         <div class="container">
             <h2>Lesson</h2>
             <p>
              <asp:Button ID="btnAddData" runat="server" Text="Add Data" CommandName="AddData" CommandArgument='<%# Eval("S_ID") %>' OnClick="btnAddData_Click" BackColor="White" BorderColor="#000099" ForeColor="#000099" />
             </p>
-            <asp:GridView ID="GridView1" runat="server" CssClass="custom-gridview" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" DataKeyNames="LESSONNO" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <asp:GridView ID="GridView1" runat="server" CssClass="custom-gridview" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" DataKeyNames="LESSONNO" CellPadding="4" ForeColor="#333333" GridLines="None" AllowPaging="True">
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
-                    <asp:CommandField ShowEditButton="True" ControlStyle-CssClass="edit-button" >
+                   
+                    <asp:BoundField DataField="LESSONNO" HeaderText="LESSONNO" ReadOnly="True" SortExpression="LESSONNO" />
+                    <asp:BoundField DataField="COURSEID" HeaderText="COURSEID" SortExpression="COURSEID" />
+                    <asp:BoundField DataField="LESSONTITLE" HeaderText="LESSONTITLE" SortExpression="LESSONTITLE" />
+                                        <asp:CommandField ShowEditButton="True" ControlStyle-CssClass="edit-button" >
 <ControlStyle CssClass="edit-button"></ControlStyle>
                     </asp:CommandField>
  <asp:CommandField ShowDeleteButton="True" ControlStyle-CssClass="delete-button"  >
 <ControlStyle CssClass="delete-button"></ControlStyle>
                     </asp:CommandField>
-                    <asp:BoundField DataField="LESSONNO" HeaderText="LESSONNO" ReadOnly="True" SortExpression="LESSONNO" />
-                    <asp:BoundField DataField="COURSEID" HeaderText="COURSEID" SortExpression="COURSEID" />
-                    <asp:BoundField DataField="LESSONTITLE" HeaderText="LESSONTITLE" SortExpression="LESSONTITLE" />
                 </Columns>
                 <EditRowStyle BackColor="#999999" />
                 <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />

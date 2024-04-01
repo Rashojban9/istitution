@@ -25,7 +25,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            background: linear-gradient(to right, #333, #666);
+            background: linear-gradient(to right, #62cff4 ,#2c67f2 );
             overflow-x: hidden;
             padding-top: 20px;
         }
@@ -49,7 +49,7 @@
         }
 
         .sidebar a.active {
-            background-color: #4CAF50;
+            background-color: #CBC3E3;
         }
 
         .container {
@@ -65,6 +65,49 @@
         h2 {
             color: #333;
         }
+        .sidebar {
+    background-color: #343a40;
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+}
+
+.sidebar-header {
+    padding: 20px;
+    text-align: center;
+}
+
+.sidebar-header h3 {
+    margin-bottom: 0;
+}
+
+.sidebar ul.components {
+    padding: 20px 0;
+}
+
+.sidebar ul.components li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul.components li a {
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+    color: #f8f9fa;
+    transition: all 0.3s;
+}
+
+.sidebar ul.components li a:hover {
+    background-color: #495057;
+}
+
+.sidebar ul.components li.active a {
+    background-color: #adb5bd;
+    color: #343a40;
+}
 
         .custom-gridview {
             width: 100%;
@@ -123,26 +166,46 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="sidebar">
-             <h1>Institution</h1>
-             <br />
-            <br />
-            <br />
-            <a href="dash.aspx" >Dashboard</a>
-            <a href="Student.aspx" >Student</a>
+       <nav class="sidebar">
+    <div class="sidebar-header bg-primary">
+        <h3 class="text-white">Institution</h3>
+    </div>
+
+    <ul class="list-unstyled components">
+        <li >
+            <a href="dash.aspx">Dashboard</a>
+        </li>
+        <li>
+            <a href="Student.aspx">Student</a>
+        </li>
+        <li>
             <a href="Instructor.aspx">Instructor</a>
+        </li>
+        <li>
             <a href="Courses.aspx">Courses</a>
-             <a href="Lesson.aspx">Lesson</a>
-             <a href="Progress.aspx">Progress</a>
-            <a href="student_enrollment.aspx" >Student Enrollment</a>
-             <a href="course_instructor.aspx" class="active">Course Instructor</a>
-            <a href="e_learning.aspx" >E-Learning</a>
-             
-           
-        </div>
+        </li>
+        <li>
+            <a href="Lesson.aspx">Lesson</a>
+        </li>
+        <li>
+            <a href="Progress.aspx">Progress</a>
+        </li>
+        <li>
+            <a href="student_enrollment.aspx">Student Enrollment</a>
+        </li>
+        <li class="active">
+            <a href="course_instructor.aspx">Course Instructor</a>
+        </li>
+        <li>
+            <a href="e_learning.aspx">E-Learning</a>
+        </li>
+    </ul>
+</nav>
+
 
         <div class="container" aria-orientation="horizontal" aria-setsize="20">
-            <h2>Student Enrollment</h2>
+            <h2>Course Instructor</h2>
+             Course
              <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource2" DataTextField="COURSE_TITLE" DataValueField="ID">
             </asp:DropDownList>
             <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT * FROM &quot;COURSE&quot;"></asp:SqlDataSource>
